@@ -1,0 +1,23 @@
+{
+  "name": "jovo_typescript_template",
+  "version": "1.0.0",
+  "description": "A template that combines Jovo and Typescript",
+  "main": "index.js",
+  "dependencies": {
+    "jovo-framework": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jovotech/jovo-sample-voice-app-nodejs.git"
+  },
+  "author": "Chase Bishop",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jovotech/jovo-sample-voice-app-nodejs/issues"
+  },
+  "homepage": "https://github.com/jovotech/jovo-sample-voice-app-nodejs#readme"
+}
