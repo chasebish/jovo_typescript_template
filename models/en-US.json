@@ -1,31 +1,77 @@
-{  
-    "invocation":"my test app",
-    "intents":[  
-        {  
-            "name":"HelloWorldIntent",
-            "phrases":[  
-                "hello",
-                "say hello",
-                "say hello world"
-            ]
-        },
-        {  
-            "name":"MyNameIsIntent",
-            "phrases":[  
-                "{name}",
-                "my name is {name}",
-                "i am {name}",
-                "you can call me {name}"
-            ],
-            "inputs":[  
-                {  
-                    "name":"name",
-                    "type":{  
-                        "alexa":"AMAZON.US_FIRST_NAME",
-                        "dialogflow":"@sys.given-name"
-                    }
-                }
-            ]
-        }
-    ]
+{
+	"invocation": "stock market data",
+	"intents": [
+		{
+			"name": "InfoIntent",
+			"phrases": [
+				"company information",
+				"information",
+				"please give me information about this company",
+				"info"
+			]
+		},
+		{
+			"name": "PriceIntent",
+			"phrases": [
+				"{stock}",
+				"{stock} stock",
+				"{stock} price",
+				"price of {stock}",
+				"how much is {stock} worth",
+				"what is the current price of {stock}"
+			],
+			"inputs": [
+				{
+					"name": "stock",
+					"type": "stockName"
+				}
+			]
+		}
+	],
+	"inputTypes": [
+		{
+			"name": "stockName",
+			"values": [
+				{
+					"value": "aapl",
+					"synonyms": [
+						"apple"
+					]
+				},
+				{
+					"value": "goog",
+					"synonyms": [
+						"alphabet",
+						"google"
+					]
+				},
+				{
+					"value": "orcl",
+					"synonyms": [
+						"oracle"
+					]
+				}
+			]
+		}
+	],
+	"alexa": {
+		"interactionModel": {
+			"languageModel": {
+				"intents": [
+					{
+						"name": "AMAZON.CancelIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.HelpIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.StopIntent",
+						"samples": []
+					}
+				]
+			}
+		}
+	}
 }

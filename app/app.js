@@ -1,34 +1,22 @@
 'use strict';
-
 // =================================================================================
 // App Configuration
 // =================================================================================
-
-const {App} = require('jovo-framework');
-
-const config = {
-    logging: true,
+var App = require('jovo-framework').App;
+var handlerConfig = require('./handlers/handlerConfig').handlerConfig;
+var config = {
+    // logging: false,
+    // requestLogging: false,
+    // responseLogging: false,
+    // saveUserOnResponseEnabled: false,
+    intentMap: {
+        'AMAZON.HelpIntent': 'HelpIntent',
+        'AMAZON.StopIntent': 'END',
+        'AMAZON.CancelIntent': 'END',
+        'AMAZON.YesIntent': 'YesIntent',
+        'AMAZON.NoIntent': 'NoIntent',
+    },
 };
-
-const app = new App(config);
-
-
-// =================================================================================
-// App Logic
-// =================================================================================
-
-app.setHandler({
-    'LAUNCH': function() {
-        this.toIntent('HelloWorldIntent');
-    },
-
-    'HelloWorldIntent': function() {
-        this.ask('Hello World! What\'s your name?', 'Please tell me your name.');
-    },
-
-    'MyNameIsIntent': function(name) {
-        this.tell('Hey ' + name.value + ', nice to meet you!');
-    },
-});
-
+var app = new App(config);
+app.setHandler(handlerConfig);
 module.exports.app = app;

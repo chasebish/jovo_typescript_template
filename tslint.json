@@ -1,0 +1,9 @@
+{
+  "extends": ["tslint:recommended"],
+  "rules": {
+    "quotemark": [true, "single"],
+    "semicolon": [true, "never"],
+    "no-console": [false],
+    "interface-name": [true, "never-prefix"]
+  }
+}

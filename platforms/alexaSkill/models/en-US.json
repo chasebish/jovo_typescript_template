@@ -1,0 +1,82 @@
+{
+	"interactionModel": {
+		"languageModel": {
+			"invocationName": "stock market data",
+			"types": [
+				{
+					"name": "stockName",
+					"values": [
+						{
+							"id": null,
+							"name": {
+								"value": "aapl",
+								"synonyms": [
+									"apple"
+								]
+							}
+						},
+						{
+							"id": null,
+							"name": {
+								"value": "goog",
+								"synonyms": [
+									"alphabet",
+									"google"
+								]
+							}
+						},
+						{
+							"id": null,
+							"name": {
+								"value": "orcl",
+								"synonyms": [
+									"oracle"
+								]
+							}
+						}
+					]
+				}
+			],
+			"intents": [
+				{
+					"name": "InfoIntent",
+					"samples": [
+						"company information",
+						"information",
+						"please give me information about this company",
+						"info"
+					]
+				},
+				{
+					"name": "PriceIntent",
+					"samples": [
+						"{stock}",
+						"{stock} stock",
+						"{stock} price",
+						"price of {stock}",
+						"how much is {stock} worth",
+						"what is the current price of {stock}"
+					],
+					"slots": [
+						{
+							"name": "stock",
+							"type": "stockName"
+						}
+					]
+				},
+				{
+					"name": "AMAZON.CancelIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.HelpIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.StopIntent",
+					"samples": []
+				}
+			]
+		}
+	}
+}
