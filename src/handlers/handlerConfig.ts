@@ -28,6 +28,16 @@ export const handlerConfig = {
 
     StockState: {
 
+        // Custom intents
+
+        InfoIntent(): void {
+            stockDialogue.stockInfo(this)
+        },
+
+        PriceIntent(stock: InputSlot): void {
+            this.toStatelessIntent('PriceIntent', stock)
+        },
+
         // Default intents
 
         HelpIntent(): void {
@@ -40,14 +50,5 @@ export const handlerConfig = {
             this.toStatelessIntent('END')
         },
 
-        // Custom intents
-
-        InfoIntent(): void {
-            stockDialogue.stockInfo(this)
-        },
-
-        PriceIntent(stock: InputSlot): void {
-            this.toStatelessIntent('PriceIntent', stock)
-        },
     },
 }
