@@ -49,7 +49,7 @@ export const stockDialogue = {
                 'Ask for info to get more info about this company or request a new company.'
             repromptSpeech = 'Ask for info or select a new company.'
 
-            cardTitle = `${stockName.name} stock`
+            cardTitle = `${stockName.key.toUpperCase()} stock`
             cardBody = `Current price: $${price}`
 
             // saves the stock name as a session attribute
