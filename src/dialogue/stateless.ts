@@ -7,15 +7,15 @@ let repromptSpeech: string
 export const stateless = {
 
     prompt(app: Jovo): void {
-        outputSpeech = 'Welcome to the typescript demo app. This demo app gets stock prices. ' +
-            'Select a stock to get a price.'
+        outputSpeech = 'Welcome to stock market data.  Pick a company to get its price!'
         repromptSpeech = 'Select a stock to get a price'
 
         app.ask(outputSpeech, repromptSpeech)
     },
 
     help(app: Jovo): void {
-        outputSpeech = 'This demo app gets stock prices. It currently supports Apple, Alphabet, and Oracle.'
+        outputSpeech = 'This app gets stock prices and company info. ' +
+            'It currently supports Apple, Alphabet, Microsoft, and Oracle.'
         repromptSpeech = 'Select a stock to get the price.'
 
         app.ask(outputSpeech, repromptSpeech)
@@ -29,7 +29,7 @@ export const stateless = {
     },
 
     end(app: Jovo): void {
-        outputSpeech = 'Thank you for trying out this demo app!'
+        outputSpeech = 'Thank you for using stock market data!'
 
         app.tell(outputSpeech)
     },

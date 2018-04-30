@@ -71,6 +71,7 @@ export const stockDialogue = {
     stockInfo(app: Jovo): void {
 
         const stockName: string = app.getSessionAttribute('stock')
+        console.log(stockName)
 
         if (!stockName) {
             error.default(app, 'couldn\'t retrieve session attribute')
@@ -80,8 +81,9 @@ export const stockDialogue = {
         let info: StockInfo
         const api = new DialogueAPI(app)
 
-        api.getPrice(stockName).then((response) => {
+        api.getInfo(stockName).then((response) => {
             info = response
+            console.log(info)
 
             outputSpeech = `${info.description} There is more information about ${stockName} in the Alexa App.` +
                 'Please select a new company to get its price.'

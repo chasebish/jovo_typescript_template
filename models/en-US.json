@@ -50,6 +50,12 @@
 					"synonyms": [
 						"oracle"
 					]
+				},
+				{
+					"value": "msft",
+					"synonyms": [
+						"microsoft"
+					]
 				}
 			]
 		}

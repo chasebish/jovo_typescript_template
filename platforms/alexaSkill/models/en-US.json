@@ -33,6 +33,15 @@
 									"oracle"
 								]
 							}
+						},
+						{
+							"id": null,
+							"name": {
+								"value": "msft",
+								"synonyms": [
+									"microsoft"
+								]
+							}
 						}
 					]
 				}
