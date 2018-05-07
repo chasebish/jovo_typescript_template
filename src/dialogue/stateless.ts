@@ -6,32 +6,32 @@ let repromptSpeech: string
 
 export const stateless = {
 
-    prompt(app: Jovo): void {
+    prompt(jovo: Jovo): void {
         outputSpeech = 'Welcome to stock market data.  Pick a company to get its price!'
         repromptSpeech = 'Select a stock to get a price'
 
-        app.ask(outputSpeech, repromptSpeech)
+        jovo.ask(outputSpeech, repromptSpeech)
     },
 
-    help(app: Jovo): void {
+    help(jovo: Jovo): void {
         outputSpeech = 'This app gets stock prices and company info. ' +
             'It currently supports Apple, Alphabet, Microsoft, and Oracle.'
         repromptSpeech = 'Select a stock to get the price.'
 
-        app.ask(outputSpeech, repromptSpeech)
+        jovo.ask(outputSpeech, repromptSpeech)
     },
 
-    unhandled(app: Jovo): void {
+    unhandled(jovo: Jovo): void {
         outputSpeech = 'Sorry, I can\'t handle that request right now.'
         repromptSpeech = outputSpeech
 
-        app.ask(outputSpeech, repromptSpeech)
+        jovo.ask(outputSpeech, repromptSpeech)
     },
 
-    end(app: Jovo): void {
+    end(jovo: Jovo): void {
         outputSpeech = 'Thank you for using stock market data!'
 
-        app.tell(outputSpeech)
+        jovo.tell(outputSpeech)
     },
 
 }

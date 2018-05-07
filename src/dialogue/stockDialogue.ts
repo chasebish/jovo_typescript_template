@@ -14,19 +14,19 @@ export const stockDialogue = {
 
     /**
      * Fetches stock price and sets state to StockState on success
-     * @param app handles requests & responses
+     * @param jovo handles requests & responses
      * @param stockName name of the stock
      */
-    stockPrice(app: Jovo, stockName: InputSlot): void {
+    stockPrice(jovo: Jovo, stockName: InputSlot): void {
 
         if (!stockName.alexaSkill) {
             outputSpeech = 'Not supported by google home yet'
-            app.tell(outputSpeech)
+            jovo.tell(outputSpeech)
             return
         }
 
         if (!stockName.alexaSkill.resolutions) {
-            error.default(app, stockName)
+            error.default(jovo, stockName)
             return
         }
 
@@ -35,12 +35,12 @@ export const stockDialogue = {
                 'Ask for help if you would like me to list all supported stocks.'
             repromptSpeech = 'Ask for help if you would like me to list the supported stocks.'
 
-            app.ask(outputSpeech, repromptSpeech)
+            jovo.ask(outputSpeech, repromptSpeech)
             return
         }
 
         let price: number
-        const api = new DialogueAPI(app)
+        const api = new DialogueAPI(jovo)
 
         api.getPrice(stockName.key).then((response) => {
             price = response
@@ -53,37 +53,37 @@ export const stockDialogue = {
             cardBody = `Current price: $${price}`
 
             // saves the stock name as a session attribute
-            app.setSessionAttribute('stock', stockName.key)
+            jovo.setSessionAttribute('stock', stockName.key)
 
             // changes the state
-            app.followUpState('StockState')
+            jovo.followUpState('StockState')
 
             // responds with a card
-            ask(app, outputSpeech, repromptSpeech, cardTitle, cardBody)
+            ask(jovo, outputSpeech, repromptSpeech, cardTitle, cardBody)
             return
         })
             .catch((err) => {
-                error.default(app, err)
+                error.default(jovo, err)
                 return
             })
     },
 
-    stockInfo(app: Jovo): void {
+    stockInfo(jovo: Jovo): void {
 
-        const stockName: string = app.getSessionAttribute('stock')
+        const stockName: string = jovo.getSessionAttribute('stock')
 
         if (!stockName) {
-            error.default(app, 'couldn\'t retrieve session attribute')
+            error.default(jovo, 'couldn\'t retrieve session attribute')
             return
         }
 
         let info: StockInfo
-        const api = new DialogueAPI(app)
+        const api = new DialogueAPI(jovo)
 
         api.getInfo(stockName).then((response) => {
             info = response
 
-            outputSpeech = `${info.description} There is more information about ${stockName} in the Alexa App. ` +
+            outputSpeech = `${info.description} There is more information about ${stockName} in the Alexa jovo. ` +
                 'Please select a new company to get its price.'
             repromptSpeech = 'Please select a new company.'
 
@@ -97,31 +97,31 @@ export const stockDialogue = {
                 `CEO: ${info.CEO}\n` +
                 `Sector: ${info.sector}\n`
 
-            ask(app, outputSpeech, repromptSpeech, cardTitle, cardBody)
+            ask(jovo, outputSpeech, repromptSpeech, cardTitle, cardBody)
             return
         })
             .catch((err) => {
-                error.default(app, err)
+                error.default(jovo, err)
                 return
             })
 
     },
 
-    help(app: Jovo): void {
-        const stockName: string = app.getSessionAttribute('stock')
+    help(jovo: Jovo): void {
+        const stockName: string = jovo.getSessionAttribute('stock')
 
         outputSpeech = `Respond with "info" to learn more about ${stockName} or choose a new company.`
         repromptSpeech = 'Ask for info or a new company.'
 
-        app.ask(outputSpeech, repromptSpeech)
+        jovo.ask(outputSpeech, repromptSpeech)
 
     },
 
-    unhandled(app: Jovo): void {
+    unhandled(jovo: Jovo): void {
         outputSpeech = 'Sorry, I can\'t handle that request right now.  Ask for help if you are stuck.'
         repromptSpeech = 'Ask for help if you need help.'
 
-        app.ask(outputSpeech, repromptSpeech)
+        jovo.ask(outputSpeech, repromptSpeech)
     },
 
     // Add more dialogue below

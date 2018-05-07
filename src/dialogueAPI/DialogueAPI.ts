@@ -10,14 +10,14 @@ export default class DialogueAPI {
     private Options: OptionsAPI
 
     /** Handles all requests and responses */
-    private app: Jovo
+    private jovo: Jovo
 
     /**
      * Constructor for DialogueAPI
-     * @param app handles requests & responses
+     * @param jovo handles requests & responses
      */
-    constructor(app: Jovo) {
-        this.app = app
+    constructor(jovo: Jovo) {
+        this.jovo = jovo
         this.Options = new OptionsAPI()
     }
 
